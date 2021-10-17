@@ -1,1 +1,11 @@
 bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
+user : hello my name is Fainza
+bot : - Hello! your name has been stored. What is your age?
+user : 21
+bot : - - are you online?
+user : yes
+bot : - Bye. Nice talking to you
+user : book an appointment
+bot : - yes please state time and doctor's name in the following format; 'Patient Name: Date: Doctor: Hospital:'
+user : faizan: 17/10/2021: John: Lilavati
+bot : - We are located at Dwarkadas J. Sanghvi College of Engineering as of now.
