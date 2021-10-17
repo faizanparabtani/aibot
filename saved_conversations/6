@@ -1,0 +1,7 @@
+bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
+user : My name is Faizan
+bot : - Hello! your name has been stored. What is your age?
+user : 21
+bot : - - are you online?
+user : Yes
+bot : - Bye. Nice talking to you
