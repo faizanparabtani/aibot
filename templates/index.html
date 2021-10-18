@@ -5,7 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>Automated Healthcare Chatbot</h1>
+    <h1>Doctor Appointment Bot</h1>
     <div>
       <div id="chatbox">
         <p class="botText"><span>Please try typing full sentences as I am still learning!</span></p>
@@ -17,6 +17,8 @@
         <input id="buttonInput" type="submit" value="Send">
       </div>
       <script>
+        navigator.geolocation.getCurrentPosition(console.log, console.log)
+
         function getBotResponse() {
           var rawText = $("#textInput").val();
           var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
