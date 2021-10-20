@@ -8,6 +8,8 @@ from openpyxl.utils import get_column_letter
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
+from flask import jsonify, json
+
 from opencage.geocoder import OpenCageGeocode
 
 
@@ -33,7 +35,6 @@ trainer='chatterbot.trainers.ListTrainer')
 english_bot.set_trainer(ListTrainer)
 
 def get_doctor_from_city(diagnosis, city):
-    print(diagnosis, city)
     filtered_doctors = []
     for i in diagnosis:
         if city in i[1]:
@@ -49,7 +50,7 @@ def get_doctor_from_diagnosis(diagnosis):
         col = "M"
         if diagnosis == ws[col+str(row)].value:
             doctor_name = ws["A"+str(row)].value + " " + ws["B"+str(row)].value
-            doctor_address = str(ws["D"+str(row)].value) + str(ws["F"+str(row)].value) + str(ws["G"+str(row)].value) + str(ws["H"+str(row)].value)
+            doctor_address = str(ws["D"+str(row)].value) + " " + str(ws["F"+str(row)].value) + " " + str(ws["G"+str(row)].value) + " " + str(ws["H"+str(row)].value)
             doctor_specialty = str(ws["L"+str(row)].value)
             doctor_list.append((doctor_name, doctor_address, doctor_specialty))
     return doctor_list
@@ -63,6 +64,13 @@ def get_location():
     results = geocoder.reverse_geocode(19.0485642, 72.8240584)
     return results
 
+
+
+
+diagnosis = ''
+city = ''    
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -74,8 +82,10 @@ def get_bot_response():
     # Diagnosis
     user_response_list = userText.split(' ')
     bot_response = response.split(' ')
-    diagnosis = ''
-    city = ''
+
+    global diagnosis
+    global city
+    
     if 'live' in user_response_list or 'stay' in user_response_list or 'reside' in user_response_list:
         city = user_response_list[-1]
 
@@ -92,12 +102,19 @@ def get_bot_response():
     elif 'itch' in bot_response or 'swallowing food' in bot_response or 'ear-wax' in bot_response:
         diagnosis = 'ENT'
 
-
+    
     if diagnosis != "":
         get_diagnosis = get_doctor_from_diagnosis(diagnosis)
         if city != "":
             get_doctors = get_doctor_from_city(get_diagnosis, city)
+            data = get_doctors
             print(get_doctors)
+            response = app.response_class(
+                response=json.dumps(data),
+                mimetype='application/json'
+            )
+            return response
+            # return jsonify(data=data)
 
 
     appendfile=os.listdir('saved_conversations')[-1]
