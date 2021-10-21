@@ -68,8 +68,8 @@ def get_location():
 
 
 diagnosis = ''
-city = ''    
-
+city = ''
+doctor_response = None
 
 @app.route("/")
 def home():
@@ -85,7 +85,12 @@ def get_bot_response():
 
     global diagnosis
     global city
-    
+    global doctor_response
+
+    if doctor_response != None:
+        if 'Book an appointment' in userText or 'book an appointment' in userText or  'Show me available doctors ' in userText or  'show me available doctors ' in userText:
+            return doctor_response
+
     if 'live' in user_response_list or 'stay' in user_response_list or 'reside' in user_response_list:
         city = user_response_list[-1]
 
@@ -102,19 +107,16 @@ def get_bot_response():
     elif 'itch' in bot_response or 'swallowing food' in bot_response or 'ear-wax' in bot_response:
         diagnosis = 'ENT'
 
-    
+
     if diagnosis != "":
         get_diagnosis = get_doctor_from_diagnosis(diagnosis)
         if city != "":
             get_doctors = get_doctor_from_city(get_diagnosis, city)
             data = get_doctors
-            print(get_doctors)
-            response = app.response_class(
+            doctor_response = app.response_class(
                 response=json.dumps(data),
                 mimetype='application/json'
             )
-            return response
-            # return jsonify(data=data)
 
 
     appendfile=os.listdir('saved_conversations')[-1]

@@ -1,3 +1,21 @@
 bot : Hi There! I am a medical chatbot. You can begin conversation by typing in a message and pressing enter.
-user : My name is Faizan Parabtani
-bot : - okay, did you get hurt, or it is a suddern paining.
+user : My name is Faizna
+bot : - Hello! your name has been stored. What is your age?
+user : I am 21 years old
+bot : - okay. your age has been stored. Which city do you live in?
+user : I live in Mumbai
+bot : - okay location stored. Welcome to medical portal. Say Hi!
+user : Hi
+bot : - Hello. How are you feeling today?
+user : I'm feeling restless  and I'm having difficulty concentrating.
+bot : - Okay, this is a symptom of anxiety. Are you feeling tired/dizzzy or having strong, fast irregular heartbeat?
+user : 
+bot : - I am interested in helping you medically!
+user : I'm feeling restless  and I'm having difficulty concentrating.
+bot : - Okay, this is a symptom of anxiety. Are you feeling tired/dizzzy or having strong, fast irregular heartbeat?
+user : Yes im feeling that
+bot : - good to know. how may i assist you then?
+user : Yes I'm experiencing these as well.
+bot : - Okay. You can try applied relaxation techniques. Do you want to try those?
+user : Yes, Tell me about it.
+bot : - The technique needs to be taught by a trained therapist, but generally involves: *learning how to relax your muscles *learning how to relax your muscles quickly and in response to a trigger, such as the word "relax" *practising relaxing your muscles in situations that make you anxious. Do you want to book an appointment with our GP?

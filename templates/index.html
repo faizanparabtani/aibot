@@ -27,16 +27,31 @@
           $("#chatbox").append(userHtml);
           document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           $.get("/get", { msg: rawText }).done(function(data) {
-            for(i=1; i<=data.length; i= i+1){
-              if(Array.isArray(data[i])){
-                var botHtml = '<p class="botText"><span>' + data[i] + '</span></p>';
-                $("#chatbox").append(botHtml);
-                document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+            if(Array.isArray(data)){
+              for(i=1; i<=data.length; i= i+1){
+                if (typeof data[i] !== 'undefined'){
+                  var botHtml = '<p class="botText"><span>' + data[i] + '</span></p>';
+                  $("#chatbox").append(botHtml);
+                  document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                }
               }
+
             }
-            var botHtml = '<p class="botText"><span>' + data + '</span></p>';
-            $("#chatbox").append(botHtml);
-            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+            else{
+              var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+              $("#chatbox").append(botHtml);
+              document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+            }
+            // for(i=1; i<=data.length; i= i+1){
+            //   if(Array.isArray(data[i])){
+            //     var botHtml = '<p class="botText"><span>' + data[i] + '</span></p>';
+            //     $("#chatbox").append(botHtml);
+            //     document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+            //   }
+            // }
+            // var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+            // $("#chatbox").append(botHtml);
+            // document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           });
         }
         $("#textInput").keypress(function(e) {
