@@ -45,6 +45,7 @@ def get_doctor_from_city(diagnosis, city):
 def get_doctor_from_diagnosis(diagnosis):
     wb = openpyxl.load_workbook('doctor_data.xlsx')
     ws = wb.active
+    print(ws)
     doctor_list = []
     for row in range(2, ws.max_row+1):
         col = "M"
@@ -52,7 +53,8 @@ def get_doctor_from_diagnosis(diagnosis):
             doctor_name = ws["A"+str(row)].value + " " + ws["B"+str(row)].value
             doctor_address = str(ws["D"+str(row)].value) + " " + str(ws["F"+str(row)].value) + " " + str(ws["G"+str(row)].value) + " " + str(ws["H"+str(row)].value)
             doctor_specialty = str(ws["L"+str(row)].value)
-            doctor_list.append((doctor_name, doctor_address, doctor_specialty))
+            doctor_contact = str(ws["L"+str(row)].value)
+            doctor_list.append((doctor_name, doctor_address, doctor_specialty, doctor_contact))
     return doctor_list
 
 def get_location():
@@ -89,6 +91,7 @@ def get_bot_response():
 
     if doctor_response != None:
         if 'Book an appointment' in userText or 'book an appointment' in userText or  'Show me available doctors ' in userText or  'show me available doctors ' in userText:
+            print(doctor_response)
             return doctor_response
 
     if 'live' in user_response_list or 'stay' in user_response_list or 'reside' in user_response_list:

@@ -11,9 +11,6 @@ user : I have a headache
 bot : - what kind of headache do you have : 1. Migrane headache - intense throbbing pain on just one side of the head. 2. Cluster headaches - severe and recurrent headaches 3. Tension Headache - Ocassional;
 user : Tension Headache
 bot : - symptom noted. The cause of tension headaches is unclear, but stress, anxiety, and depression are common triggers. would you like to talk to a doctor?
-user : Yes i would like to book an appointment
-bot : - yes please state time and doctor's name in the following format; 'Patient Name: Date: Doctor: Hospital:'
-user : Faizan: 04/10/21: Yash: Sion:
 bot : - okay, did you get hurt, or it is a suddern aching.
 user : Sudden aching
 bot : - okay, did you get hurt, or it is a suddern aching.

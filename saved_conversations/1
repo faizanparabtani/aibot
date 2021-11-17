@@ -15,10 +15,6 @@ user : cluster headache
 bot : - symptom noted. Attacks tend to occur in daily clusters that can persist for weeks or months. They typically take place at the same time of day, which can often be a couple of hours after falling asleep at night. would you like to talk to a doctor?
 user : yes i'd like to talk to a doctor
 bot : - you shall be called once the doctor is available. Do you want to book an appointment?
-user : yes book an appointment for me
-bot : - yes please state time and doctor's name in the following format; 'Patient Name: Date: Doctor: Hospital:'
-user : Patient Name: Atulya Date: 05.03.17 Doctor: Yogesh Hospital: Hiranandani
-bot : - appointment details saved. you shall be contacted shortly.
 user : thanks
 bot : - happy to help!
 user : Bye
